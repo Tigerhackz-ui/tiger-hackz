@@ -1,1 +1,70 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Tiger HackZ</title><style>body{background:#0a0a0a;color:#fff;font-family:sans-serif;text-align:center;padding:20px}.card{max-width:600px;margin:20px auto;background:#151515;border:1px solid #222;border-radius:20px;padding:20px}input{width:90%;padding:12px;border-radius:10px;border:2px solid #333;background:#0e0e0e;color:#fff}button{width:95%;margin-top:10px;padding:14px;border:0;border-radius:12px;background:linear-gradient(90deg,#ff6a00,#ff1a1a);color:#fff;font-weight:800}#res{display:none;margin-top:15px;background:#222;padding:12px;border-radius:10px}a{color:#fff;text-decoration:none;display:block;padding:10px;background:#333;border-radius:8px;margin-top:8px}.primary{background:linear-gradient(90deg,#ff6a00,#ff1a1a)!important}</style></head><body><h1>Video to <span style="color:#ff6a00">MP3</span></h1><p style="opacity:.6">Youtube TikTok FB Auto</p><div class="card"><input id="link" placeholder="Paste link here..."><button onclick="convert()">CONVERT TO MP3</button><div id="loading" style="display:none;margin-top:10px">Loading... 🐯</div><div id="res"><p id="title">Ready!</p><a id="mp3" class="primary" target="_blank">Download MP3</a><a id="mp4" target="_blank">Download MP4</a></div><p style="font-size:11px;opacity:.5;margin-top:20px">POWERED BY <b style="color:#ff6a00">TIGER HACKZ</b></p></div><script>function convert(){var url=document.getElementById('link').value.trim();if(!url){alert('Link danna!');return}document.getElementById('loading').style.display='block';document.getElementById('res').style.display='none';fetch('https://api.cobalt.tools/api/json',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({url:url,aFormat:'mp3'})}).then(r=>r.json()).then(d=>{loading.style.display='none';res.style.display='block';if(d.url){mp3.href=d.url;mp4.href=d.url}}).catch(e=>{loading.style.display='none';res.style.display='block';var enc=encodeURIComponent(url);mp3.href='https://ytmp3s.nu/en2#url='+enc;mp4.href='https://ssstik.io/en?url='+enc;})}</script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tiger HackZ - Ultimate Downloader</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#000;color:#fff;font-family:'Poppins',sans-serif;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;background:radial-gradient(circle at 50% 0%, #1a1a1a 0%, #000 70%)}
+.card{width:100%;max-width:450px;background:linear-gradient(145deg, #111, #0a0a0a);border:1px solid #222;border-radius:25px;padding:30px;box-shadow:0 0 50px rgba(0,255,136,0.1)}
+.logo{font-family:'Orbitron',sans-serif;font-size:32px;font-weight:900;text-align:center;background:linear-gradient(90deg,#00ff88,#00d4ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:5px}
+.sub{color:#666;text-align:center;font-size:13px;margin-bottom:25px;letter-spacing:2px}
+.input-box{display:flex;background:#1a1a1a;border:1px solid #333;border-radius:15px;overflow:hidden;margin-bottom:15px}
+.input-box input{flex:1;background:transparent;border:none;padding:15px;color:#fff;outline:none}
+.input-box button{background:linear-gradient(90deg,#00ff88,#00d4ff);border:none;padding:0 20px;font-weight:700;cursor:pointer}
+.platforms{display:flex;gap:8px;justify-content:center;margin-bottom:20px;flex-wrap:wrap}
+.pill{font-size:11px;padding:6px 12px;border-radius:20px;background:#1a1a1a;border:1px solid #333;color:#888}
+.pill.active{border-color:#00ff88;color:#00ff88;background:rgba(0,255,136,0.1)}
+.btn-main{width:100%;padding:16px;border:none;border-radius:15px;background:linear-gradient(90deg,#00ff88,#00d4ff);font-family:'Orbitron',sans-serif;font-weight:800;font-size:16px;cursor:pointer;color:#000;transition:0.2s}
+.btn-main:hover{transform:scale(1.02);box-shadow:0 0 20px rgba(0,255,136,0.5)}
+.result{margin-top:20px;padding:20px;background:#111;border-radius:15px;border:1px solid #00ff88;display:none}
+.result.show{display:block}
+audio{width:100%;margin-top:10px}
+.download-btn{display:block;text-align:center;margin-top:15px;padding:12px;background:#fff;color:#000;border-radius:10px;text-decoration:none;font-weight:700}
+.footer{text-align:center;margin-top:20px;color:#333;font-size:11px}
+</style>
+</head>
+<body>
+<div class="card">
+<div class="logo">TIGER HACKZ</div>
+<div class="sub">V2 • NO REDIRECT • ULTIMATE</div>
+
+<div class="input-box">
+<input id="url" type="text" placeholder="Paste YouTube / TikTok / FB link...">
+<button onclick="paste()">📋</button>
+</div>
+
+<div class="platforms">
+<span class="pill" id="yt">YT • MP3 / MP4</span>
+<span class="pill" id="tt">TikTok • No Watermark</span>
+<span class="pill" id="fb">FB • Insta • HD</span>
+</div>
+
+<button class="btn-main" onclick="convert()">⚡ CONVERT NOW</button>
+
+<div id="result" class="result">
+<div id="status" style="font-weight:600;color:#00ff88">✓ Ready to download!</div>
+<div id="info" style="font-size:12px;color:#888;margin-top:5px"></div>
+<audio id="player" controls style="display:none"></audio>
+<a id="dl" class="download-btn" target="_blank" style="display:none">⬇️ DOWNLOAD MP3</a>
+<div style="margin-top:10px;font-size:11px;color:#666">If download not start, click button above. File will be in your music folder.</div>
+</div>
+
+<div class="footer">Made by TigerHackZ • Colombo, LK • 100% Free Forever</div>
+</div>
+
+<script>
+const input = document.getElementById('url');
+const result = document.getElementById('result');
+const statusEl = document.getElementById('status');
+const infoEl = document.getElementById('info');
+const dl = document.getElementById('dl');
+
+input.addEventListener('input',()=>{
+  let v=input.value.toLowerCase();
+  document.querySelectorAll('.pill').forEach(p=>p.classList.remove('active'));
+  if(v.includes('youtu')) document.getElementById('yt').classList.add('active');
+  else if(v.includes('tiktok')) document.getElementById('tt').classList.add('active');
+  else if(v.includes('facebook')||v.includes('fb.watch')||v.includes('instagram
