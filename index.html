@@ -1,70 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tiger HackZ - Ultimate Downloader</title>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<title>TIGER HACKZ V3</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:#000;color:#fff;font-family:'Poppins',sans-serif;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;background:radial-gradient(circle at 50% 0%, #1a1a1a 0%, #000 70%)}
-.card{width:100%;max-width:450px;background:linear-gradient(145deg, #111, #0a0a0a);border:1px solid #222;border-radius:25px;padding:30px;box-shadow:0 0 50px rgba(0,255,136,0.1)}
-.logo{font-family:'Orbitron',sans-serif;font-size:32px;font-weight:900;text-align:center;background:linear-gradient(90deg,#00ff88,#00d4ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:5px}
-.sub{color:#666;text-align:center;font-size:13px;margin-bottom:25px;letter-spacing:2px}
-.input-box{display:flex;background:#1a1a1a;border:1px solid #333;border-radius:15px;overflow:hidden;margin-bottom:15px}
-.input-box input{flex:1;background:transparent;border:none;padding:15px;color:#fff;outline:none}
-.input-box button{background:linear-gradient(90deg,#00ff88,#00d4ff);border:none;padding:0 20px;font-weight:700;cursor:pointer}
-.platforms{display:flex;gap:8px;justify-content:center;margin-bottom:20px;flex-wrap:wrap}
-.pill{font-size:11px;padding:6px 12px;border-radius:20px;background:#1a1a1a;border:1px solid #333;color:#888}
-.pill.active{border-color:#00ff88;color:#00ff88;background:rgba(0,255,136,0.1)}
-.btn-main{width:100%;padding:16px;border:none;border-radius:15px;background:linear-gradient(90deg,#00ff88,#00d4ff);font-family:'Orbitron',sans-serif;font-weight:800;font-size:16px;cursor:pointer;color:#000;transition:0.2s}
-.btn-main:hover{transform:scale(1.02);box-shadow:0 0 20px rgba(0,255,136,0.5)}
-.result{margin-top:20px;padding:20px;background:#111;border-radius:15px;border:1px solid #00ff88;display:none}
-.result.show{display:block}
-audio{width:100%;margin-top:10px}
-.download-btn{display:block;text-align:center;margin-top:15px;padding:12px;background:#fff;color:#000;border-radius:10px;text-decoration:none;font-weight:700}
-.footer{text-align:center;margin-top:20px;color:#333;font-size:11px}
+body{background:#000;color:#fff;font-family:sans-serif;display:flex;justify-content:center;padding:20px}
+.card{width:100%;max-width:480px;background:#111;border:1px solid #222;border-radius:25px;padding:25px}
+.logo{font-size:26px;font-weight:900;text-align:center;color:#00ff88;margin-bottom:15px}
+input{width:100%;padding:15px;background:#1a1a1a;border:1px solid #333;border-radius:12px;color:#fff;outline:none;margin-bottom:12px}
+button{width:100%;padding:15px;background:#00ff88;color:#000;border:none;border-radius:12px;font-weight:900;cursor:pointer}
+#result{margin-top:15px;border-radius:15px;overflow:hidden;display:none;border:1px solid #00ff88}
+#result.show{display:block}
+iframe{width:100%;height:450px;border:none;background:white}
+.hint{font-size:11px;color:#666;text-align:center;margin-top:10px}
 </style>
 </head>
 <body>
 <div class="card">
-<div class="logo">TIGER HACKZ</div>
-<div class="sub">V2 • NO REDIRECT • ULTIMATE</div>
-
-<div class="input-box">
-<input id="url" type="text" placeholder="Paste YouTube / TikTok / FB link...">
-<button onclick="paste()">📋</button>
+<div class="logo">TIGER HACKZ V3</div>
+<input id="url" placeholder="Paste YouTube / TikTok / FB link...">
+<button onclick="convert()">⚡ CONVERT - NO NEW TAB</button>
+<div class="hint">Converter opens INSIDE this site. No redirect to other site.</div>
+<div id="result">
+<iframe id="frame"></iframe>
 </div>
-
-<div class="platforms">
-<span class="pill" id="yt">YT • MP3 / MP4</span>
-<span class="pill" id="tt">TikTok • No Watermark</span>
-<span class="pill" id="fb">FB • Insta • HD</span>
 </div>
-
-<button class="btn-main" onclick="convert()">⚡ CONVERT NOW</button>
-
-<div id="result" class="result">
-<div id="status" style="font-weight:600;color:#00ff88">✓ Ready to download!</div>
-<div id="info" style="font-size:12px;color:#888;margin-top:5px"></div>
-<audio id="player" controls style="display:none"></audio>
-<a id="dl" class="download-btn" target="_blank" style="display:none">⬇️ DOWNLOAD MP3</a>
-<div style="margin-top:10px;font-size:11px;color:#666">If download not start, click button above. File will be in your music folder.</div>
-</div>
-
-<div class="footer">Made by TigerHackZ • Colombo, LK • 100% Free Forever</div>
-</div>
-
 <script>
-const input = document.getElementById('url');
-const result = document.getElementById('result');
-const statusEl = document.getElementById('status');
-const infoEl = document.getElementById('info');
-const dl = document.getElementById('dl');
-
-input.addEventListener('input',()=>{
-  let v=input.value.toLowerCase();
-  document.querySelectorAll('.pill').forEach(p=>p.classList.remove('active'));
-  if(v.includes('youtu')) document.getElementById('yt').classList.add('active');
-  else if(v.includes('tiktok')) document.getElementById('tt').classList.add('active');
-  else if(v.includes('facebook')||v.includes('fb.watch')||v.includes('instagram
+function convert(){
+ let u=document.getElementById('url').value.trim();
+ if(!u){alert('Link eka danna machan!');return}
+ document.getElementById('result').classList.add('show');
+ // This loads converter INSIDE your site - so user stays on Tiger HackZ
+ document.getElementById('frame').src='https://ytmp3.la/en2/#url='+encodeURIComponent(u);
+}
+</script>
+</div>
+</body>
+</html>
