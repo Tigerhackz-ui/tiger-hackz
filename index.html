@@ -3,39 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TIGER OPTIMIZER - Powered by Tigerhackz</title>
+<title>TIGER OPTIMIZER - Final</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',system-ui,sans-serif}
-body{background:#080808;color:#fff;overflow-x:hidden}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif}
+body{background:#080808;color:#fff}
 .loading{position:fixed;inset:0;background:#000;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:9999;transition:0.6s}
 .loading.hide{opacity:0;pointer-events:none}
-.tiger-logo{width:115px;height:115px;border-radius:50%;background:radial-gradient(circle at 30% 30%,#ffcf4d,#ff8c00);display:flex;align-items:center;justify-content:center;font-size:70px;box-shadow:0 0 50px rgba(255,174,0,0.7);animation:pulse 1.4s infinite}
+.tiger-logo{width:115px;height:115px;border-radius:50%;background:radial-gradient(circle,#ffcf4d,#ff8c00);display:flex;align-items:center;justify-content:center;font-size:70px;box-shadow:0 0 50px rgba(255,174,0,0.7);animation:pulse 1.4s infinite}
 @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.07)}}
 .load-bar{width:230px;height:5px;background:#222;border-radius:10px;margin-top:22px;overflow:hidden}
 .load-fill{height:100%;width:0%;background:linear-gradient(90deg,#ffae00,#ff6a00);animation:load 2.3s forwards}
 @keyframes load{to{width:100%}}
 .container{max-width:430px;margin:0 auto;padding:18px;padding-bottom:90px}
 .header{text-align:center;padding:22px 0}
-.top-icon{width:86px;height:86px;margin:0 auto 12px;border-radius:50%;background:linear-gradient(145deg,#1e1e1e,#0f0f0f);border:2px solid #ffae00;display:flex;align-items:center;justify-content:center;font-size:50px;box-shadow:0 0 25px rgba(255,174,0,0.35)}
-.header h1{font-size:27px;font-weight:900;letter-spacing:2px}
-.header h1 span{color:#ffae00}
-.sub{font-size:11px;opacity:0.5;letter-spacing:2.5px;margin-top:5px}
-.badge{display:inline-block;background:#151515;border:1px solid #333;padding:7px 14px;border-radius:20px;font-size:11px;margin-top:12px}
-.card{background:linear-gradient(145deg,#161616,#111);border:1px solid #222;border-radius:20px;padding:18px;margin:14px 0}
-.card-title{font-size:13px;opacity:0.7;margin-bottom:14px;font-weight:700;display:flex;align-items:center;gap:8px}
-.row{display:flex;justify-content:space-between;align-items:center;padding:13px 0;border-bottom:1px solid #1e1e1e}
-.row:last-child{border:0}
-.toggle{width:52px;height:30px;background:#2a2a2a;border-radius:20px;position:relative;cursor:pointer;transition:0.3s}
-.toggle.active{background:linear-gradient(90deg,#ffae00,#ff6a00);box-shadow:0 0 15px rgba(255,174,0,0.5)}
-.toggle::after{content:'';position:absolute;width:24px;height:24px;background:#fff;border-radius:50%;top:3px;left:3px;transition:0.3s}
-.toggle.active::after{left:25px}
-.slider{width:100%;accent-color:#ffae00;margin-top:10px;height:6px}
-.value{color:#ffae00;font-weight:800;font-size:14px;background:#222;padding:3px 9px;border-radius:8px}
-.dot{width:8px;height:8px;background:#00ff88;border-radius:50%;display:inline-block;animation:blink 1s infinite;margin-right:6px}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
-.stat-bar{display:flex;gap:10px;margin-top:12px}
-.stat{flex:1;background:#0f0f0f;border:1px solid #232323;border-radius:14px;padding:12px;text-align:center}
-.stat b{display:block;font-size:20px;color:#ffae00}
-.stat small{font-size:10px;opacity:0.5;margin-top:4px;display:block}
-.info{margin-top:12px;font-size:11px;opacity:0.6;line-height:1.7;background:#0a0a0a;padding:10px;border-radius:10px;border:1px solid #1a1a1a}
-.btn{width:100%;padding:17px;background:linear-gradient(90deg,#ffae00,#ff6a00);border:0;border-radius:16
+.top-icon{width:86px;height:86px;margin:0 auto 12px;border-radius:50%;background:linear-gradient(145deg,#1e1e1e,#0f0f0f);border:2
